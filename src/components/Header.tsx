@@ -26,8 +26,8 @@ const Header = () => {
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
         <div className="text-white font-bold text-xl md:text-2xl font-poppins flex items-center">
-          <div className="bg-purple-600 w-8 h-8 rounded-lg flex items-center justify-center mr-2">
-            <span className="text-white font-bold">ST</span>
+          <div className="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center mr-2">
+            <span className="font-bold">ST</span>
           </div>
           SERP Tracker Pro
         </div>
@@ -62,7 +62,7 @@ const Header = () => {
         <div className="hidden md:block">
           <PrimaryButton 
             variant="default" 
-            className="bg-purple-600 hover:bg-purple-700 rounded-full"
+            className="rounded-full"
           >
             Contact Us
           </PrimaryButton>
@@ -101,7 +101,7 @@ const Header = () => {
             </a>
             <div className="pt-4">
               <PrimaryButton 
-                className="w-full bg-purple-600 hover:bg-purple-700 rounded-full"
+                className="w-full rounded-full"
               >
                 Contact Us
               </PrimaryButton>
