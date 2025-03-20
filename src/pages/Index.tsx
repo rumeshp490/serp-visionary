@@ -104,10 +104,24 @@ const Index = () => {
     <div className="min-h-screen bg-black text-white">
       <Header />
       
-      {/* Hero Section */}
+      {/* Hero Section with Grid Background */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full">
+        {/* Sophisticated Grid Background */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-600/20 via-black to-black"></div>
+          <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-full max-w-4xl mx-auto h-[50vh] opacity-20">
+            <div className="h-full w-full grid grid-cols-12 grid-rows-8">
+              {Array.from({ length: 96 }).map((_, i) => (
+                <div 
+                  key={i} 
+                  className="border border-white/10 backdrop-blur-sm"
+                  style={{
+                    opacity: Math.random() * 0.5 + 0.25
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
         
         <div className="container relative">
