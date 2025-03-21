@@ -8,27 +8,66 @@ import { cn } from '../lib/utils';
 const HeroSection = () => {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#1A0B2E] to-black pointer-events-none"></div>
+      {/* Deep Black to Neon Purple Radial Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#120723] to-black pointer-events-none"></div>
       
-      {/* Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#8B5CF6]/10 blur-[120px] opacity-60 pointer-events-none"></div>
+      {/* Enhanced Radial Glow */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#8B5CF6]/15 blur-[100px] opacity-70 pointer-events-none"></div>
       
-      {/* Grid Background */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-full max-w-4xl mx-auto h-[50vh] opacity-20">
-          <div className="h-full w-full grid grid-cols-12 grid-rows-8">
-            {Array.from({ length: 96 }).map((_, i) => (
+      {/* Sophisticated Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        {/* Horizontal Lines */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div 
+              key={`h-${i}`} 
+              className="absolute w-full border-t border-white/10"
+              style={{ top: `${(i + 1) * 5}%` }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Vertical Lines */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div 
+              key={`v-${i}`} 
+              className="absolute h-full border-l border-white/10"
+              style={{ left: `${(i + 1) * 5}%` }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Focal Grid (more visible in center) */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-5xl h-[60vh] opacity-50">
+          <div className="h-full w-full grid grid-cols-16 grid-rows-10">
+            {Array.from({ length: 160 }).map((_, i) => (
               <div 
-                key={i} 
-                className="border border-white/10 backdrop-blur-sm"
+                key={`focal-${i}`} 
+                className="border border-white/20 backdrop-blur-sm"
                 style={{
-                  opacity: Math.random() * 0.5 + 0.25
+                  opacity: Math.random() * 0.7 + 0.3
                 }}
               />
             ))}
           </div>
         </div>
+      </div>
+      
+      {/* Subtle Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div 
+            key={`particle-${i}`}
+            className="absolute w-2 h-2 rounded-full bg-[#8B5CF6]/40 animate-float"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${Math.random() * 10 + 10}s`
+            }}
+          ></div>
+        ))}
       </div>
       
       <div className="container relative">
@@ -56,7 +95,7 @@ const HeroSection = () => {
               />
               <Button 
                 variant="red" 
-                className="absolute right-1 top-1 h-10 rounded-full"
+                className="absolute right-1.5 top-1.5 h-9 rounded-full"
               >
                 Get Notified
               </Button>
