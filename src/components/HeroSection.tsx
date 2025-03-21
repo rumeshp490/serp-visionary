@@ -12,19 +12,18 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[#1A0B2E] to-black pointer-events-none"></div>
       
       {/* Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#353535]/10 blur-[120px] opacity-60 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#8B5CF6]/10 blur-[120px] opacity-60 pointer-events-none"></div>
       
-      {/* Sophisticated Grid Background - visible only in the middle */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl mx-auto h-[60vh] opacity-15">
-          <div className="h-full w-full grid grid-cols-12 grid-rows-8 gap-px">
+      {/* Grid Background */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/4 w-full max-w-4xl mx-auto h-[50vh] opacity-20">
+          <div className="h-full w-full grid grid-cols-12 grid-rows-8">
             {Array.from({ length: 96 }).map((_, i) => (
               <div 
                 key={i} 
-                className="border border-white/5 backdrop-blur-sm"
+                className="border border-white/10 backdrop-blur-sm"
                 style={{
-                  opacity: Math.random() * 0.5 + 0.25,
-                  background: i % 4 === 0 ? 'rgba(255, 255, 255, 0.03)' : 'transparent'
+                  opacity: Math.random() * 0.5 + 0.25
                 }}
               />
             ))}
@@ -35,8 +34,8 @@ const HeroSection = () => {
       <div className="container relative">
         {/* Version Badge */}
         <div className="flex justify-center mb-8">
-          <div className="bg-black/30 backdrop-blur-lg border border-white/30 rounded-full px-4 py-2 text-white flex items-center">
-            <div className="w-2 h-2 rounded-full bg-white mr-2"></div>
+          <div className="bg-black/30 backdrop-blur-lg border border-[#8B5CF6]/30 rounded-full px-4 py-2 text-white flex items-center">
+            <div className="w-2 h-2 rounded-full bg-[#8B5CF6] mr-2"></div>
             V2.0 is now available
           </div>
         </div>
@@ -66,11 +65,11 @@ const HeroSection = () => {
           
           <div className="flex justify-center space-x-8 mt-6">
             <div className="flex items-center">
-              <Check size={16} className="text-white mr-2" />
+              <Check size={16} className="text-[#8B5CF6] mr-2" />
               <span className="text-sm text-gray-300">No credit card required</span>
             </div>
             <div className="flex items-center">
-              <Check size={16} className="text-white mr-2" />
+              <Check size={16} className="text-[#8B5CF6] mr-2" />
               <span className="text-sm text-gray-300">7-days free trial</span>
             </div>
           </div>
@@ -81,10 +80,10 @@ const HeroSection = () => {
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="w-8 h-8 rounded-full border-2 border-black bg-gray-300 flex items-center justify-center overflow-hidden">
                   <div className={cn("w-full h-full bg-gradient-to-br", 
-                    i === 1 ? "from-gray-200 to-gray-300" : 
-                    i === 2 ? "from-gray-300 to-gray-400" : 
-                    i === 3 ? "from-gray-400 to-gray-500" : 
-                    "from-gray-500 to-gray-600"
+                    i === 1 ? "from-orange-200 to-red-300" : 
+                    i === 2 ? "from-blue-200 to-purple-300" : 
+                    i === 3 ? "from-green-200 to-teal-300" : 
+                    "from-yellow-200 to-amber-300"
                   )}></div>
                 </div>
               ))}
