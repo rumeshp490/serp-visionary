@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { PrimaryButton } from './PrimaryButton';
+import { Button } from './ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -25,18 +25,18 @@ const Header = () => {
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
         {/* Logo */}
-        <div className="text-white font-bold text-xl md:text-2xl font-poppins flex items-center">
-          <div className="bg-white text-black w-8 h-8 rounded-lg flex items-center justify-center mr-2">
-            <span className="font-bold">ST</span>
+        <div className="text-white font-bold text-xl md:text-2xl font-sans flex items-center">
+          <div className="bg-[#8B5CF6] w-10 h-10 rounded-lg flex items-center justify-center mr-3">
+            <span className="text-white font-bold">Sa</span>
           </div>
-          SERP Tracker Pro
+          SaaStify
         </div>
 
         {/* Desktop Navigation - Center */}
-        <nav className="hidden md:flex">
-          <div className="bg-white/10 backdrop-blur-md rounded-full px-2 py-1">
+        <nav className="hidden md:flex items-center">
+          <div className="bg-white/10 backdrop-blur-md rounded-full px-2 py-1 border border-white/10">
             <ul className="flex space-x-1">
-              {['Home', 'Features', 'Pricing', 'Testimonials', 'Contact'].map((item) => (
+              {['About', 'Blog', 'Pricing', 'Features'].map((item) => (
                 <li key={item}>
                   <a 
                     href={`#${item.toLowerCase()}`}
@@ -60,12 +60,12 @@ const Header = () => {
 
         {/* CTA Button - Desktop */}
         <div className="hidden md:block">
-          <PrimaryButton 
-            variant="default" 
-            className="rounded-full"
+          <Button 
+            variant="glass" 
+            className="rounded-full border border-[#8B5CF6] shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
           >
             Contact Us
-          </PrimaryButton>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -82,7 +82,7 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-md p-4 animate-fade-in">
           <nav className="flex flex-col space-y-4 py-4">
-            {['Home', 'Features', 'Pricing', 'Testimonials', 'Contact'].map((item) => (
+            {['About', 'Blog', 'Pricing', 'Features'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`}
@@ -100,11 +100,11 @@ const Header = () => {
               All Pages <ChevronDown className="ml-1 w-4 h-4" />
             </a>
             <div className="pt-4">
-              <PrimaryButton 
-                className="w-full rounded-full"
+              <Button 
+                className="w-full rounded-full border border-[#8B5CF6] bg-white/5 backdrop-blur-md text-white shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]"
               >
                 Contact Us
-              </PrimaryButton>
+              </Button>
             </div>
           </nav>
         </div>

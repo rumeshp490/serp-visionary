@@ -1,9 +1,10 @@
 
 import React from 'react';
 import { cn } from '../lib/utils';
+import { Button } from './ui/button';
 
 interface PrimaryButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline';
+  variant?: 'default' | 'outline' | 'purple' | 'red' | 'glass';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
@@ -15,30 +16,20 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseClasses = "rounded-lg font-medium transition-all duration-300 ease-in-out";
-  
-  const variantClasses = {
-    default: "bg-white text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]",
-    outline: "bg-transparent border border-white text-white hover:bg-white/10"
-  };
-  
-  const sizeClasses = {
-    sm: "py-2 px-4 text-sm",
-    md: "py-3 px-6 text-base",
-    lg: "py-4 px-8 text-lg"
-  };
+  const sizeMap = {
+    sm: 'sm',
+    md: 'default',
+    lg: 'lg'
+  } as const;
   
   return (
-    <button
-      className={cn(
-        baseClasses,
-        variantClasses[variant],
-        sizeClasses[size],
-        className
-      )}
+    <Button
+      variant={variant}
+      size={sizeMap[size]}
+      className={cn(className)}
       {...props}
     >
       {children}
-    </button>
+    </Button>
   );
 };
