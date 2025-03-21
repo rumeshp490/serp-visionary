@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LineChart, Line, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, ResponsiveContainer } from 'recharts';
 import { MoreHorizontal } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -8,6 +8,7 @@ interface MetricCardProps {
   title: string;
   value: string;
   change: string;
+  percentValue: string;
   changeDirection: 'up' | 'down';
   data: { value: number }[];
   color: string;
@@ -18,6 +19,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
   title,
   value,
   change,
+  percentValue,
   changeDirection,
   data,
   color,
@@ -26,12 +28,12 @@ const MetricCard: React.FC<MetricCardProps> = ({
   return (
     <div 
       className={cn(
-        "relative overflow-hidden rounded-xl backdrop-blur-xl bg-gradient-to-br from-black/60 to-black/40 border border-white/10 p-6 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] animate-float", 
+        "relative overflow-hidden rounded-xl backdrop-blur-xl bg-gradient-to-br from-[#181829]/90 to-[#181829]/70 border border-white/10 p-6 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] animate-float", 
         className
       )}
     >
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-white text-sm font-medium">{title}</h3>
+      <div className="flex items-center justify-between mb-3">
+        <h3 className="text-white text-base font-medium">{title}</h3>
         <button className="text-gray-400 hover:text-white">
           <MoreHorizontal size={18} />
         </button>
@@ -42,28 +44,23 @@ const MetricCard: React.FC<MetricCardProps> = ({
       </div>
       
       <div className="flex items-center mb-4">
-        <span 
-          className={cn(
-            "text-xs font-medium mr-2", 
-            changeDirection === 'up' ? 'text-green-500' : 'text-red-500'
-          )}
-        >
-          {change}
+        <span className={cn(
+          "flex items-center text-xs font-medium", 
+          changeDirection === 'up' ? 'text-green-500' : 'text-red-500'
+        )}>
+          <span className="mr-1">
+            {changeDirection === 'up' ? '↑' : '↓'}
+          </span>
+          {percentValue}
         </span>
-        <span className="text-gray-400 text-xs">since last period</span>
+        <span className="text-gray-400 text-xs ml-2">Since last period</span>
       </div>
       
-      <div className="h-16">
+      <div className="h-14">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <Line 
-              type="monotone" 
-              dataKey="value" 
-              stroke={color} 
-              strokeWidth={2} 
-              dot={false}
-            />
-          </LineChart>
+          <BarChart data={data}>
+            <Bar dataKey="value" fill={color} radius={[2, 2, 0, 0]} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
@@ -75,7 +72,8 @@ const FinanceMetricsCards = () => {
     {
       title: "Total Revenue",
       value: "$1.89K",
-      change: "↑ 15%",
+      change: "up",
+      percentValue: "45%",
       changeDirection: 'up' as const,
       data: Array.from({ length: 12 }).map((_, i) => ({ 
         value: 10 + Math.floor(Math.random() * 40)
@@ -84,8 +82,9 @@ const FinanceMetricsCards = () => {
     },
     {
       title: "Total Revenue",
-      value: "$100,500",
-      change: "↑ 10%",
+      value: "$1,00,500",
+      change: "up",
+      percentValue: "80%",
       changeDirection: 'up' as const,
       data: Array.from({ length: 12 }).map((_, i) => ({ 
         value: 15 + Math.floor(Math.random() * 50)
@@ -95,8 +94,9 @@ const FinanceMetricsCards = () => {
     {
       title: "Avg. Order Revenue",
       value: "$249.50K",
-      change: "↓ 7%",
-      changeDirection: 'down' as const,
+      change: "up",
+      percentValue: "70%",
+      changeDirection: 'up' as const,
       data: Array.from({ length: 12 }).map((_, i) => ({ 
         value: 20 + Math.floor(Math.random() * 30)
       })),
